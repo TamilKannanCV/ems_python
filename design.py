@@ -166,7 +166,7 @@ class Ui_MainWindow(object):
         if employee is None:
             self.lblSearchResult.setText("No result found")
         else:
-            self.lblSearchResult.setText("Name: "+ employee.name + "\n"+ "Age: "+ employee.age + "\n"+ "Salary: Rs " + employee.salary)
+            self.lblSearchResult.setText("ID: " + employee.id + "\nName: "+ employee.name + "\n"+ "Age: "+ employee.age + "\n"+ "Salary: Rs " + employee.salary)
     
     # Shows a message box
     def showMessageBox(self, title:str, message: str):

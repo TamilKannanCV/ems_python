@@ -1,4 +1,3 @@
-from typing import List
 from employee import Employee
 def linearSearch(datas, toFind: str) -> Employee:
     
