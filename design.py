@@ -48,6 +48,9 @@ class Ui_MainWindow(object):
         self.btnClr = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.clr())
         self.btnClr.setGeometry(QtCore.QRect(420, 150, 90, 26))
         self.btnClr.setObjectName("btnClr")
+        self.btnDisp = QtWidgets.QPushButton(self.centralwidget, clicked= lambda: self.showDetails())
+        self.btnDisp.setGeometry(QtCore.QRect(320, 150, 90, 26))
+        self.btnDisp.setObjectName("btnDisp")
         self.groupBox_2 = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox_2.setGeometry(QtCore.QRect(10, 190, 601, 281))
         font = QtGui.QFont()
@@ -124,6 +127,7 @@ class Ui_MainWindow(object):
         self.txtName.setPlaceholderText(_translate("MainWindow", "Employee Name"))
         self.btnAdd.setText(_translate("MainWindow", "Add"))
         self.btnClr.setText(_translate("MainWindow", "Clear"))
+        self.btnDisp.setText(_translate("MainWindow", "Show All"))
         self.groupBox_2.setTitle(_translate("MainWindow", "Employees Found"))
         self.btnDelete.setText(_translate("MainWindow", "Delete"))
         self.groupBox_3.setTitle(_translate("MainWindow", "Search Employee"))
@@ -179,6 +183,16 @@ class Ui_MainWindow(object):
         returnValue = msgBox.exec()
         if returnValue == QtWidgets.QMessageBox.Ok:
             msgBox.close()
+
+    def showDetails(self):
+        details = "Employee details"
+        if self.employeeList.__len__() == 0:
+            self.showMessageBox("Details", "No details found to display")
+            return
+        for i in self.employeeList:
+            emp: Employee = i
+            details += "\n" + emp.id + "\n\tName: " + emp.name + "\n\tAge: "+emp.age + "\n\tSalary: " + emp.salary
+        self.showMessageBox("Details", details)
 
     def onItemSelected(self, item :QtWidgets.QTableWidgetItem):
         self.btnDelete.setEnabled(True)
