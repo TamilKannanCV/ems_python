@@ -1,7 +1,5 @@
-from math import radians
 from PyQt5 import QtWidgets
 from design import Ui_MainWindow
-from random import randint
 import sys
 
 from employee import Employee
